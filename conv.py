@@ -3,27 +3,38 @@ import time
 
 
 
-global wert_eins
-global wert_zwei
+
 iterativ = 10
 
 def erzeugung_zwei():
-    wert_zwei
-    iterativ
-    random.seed(time.time())
+    global iterativ
+    wert_zwei = 0
     for i in range(iterativ):
-        wert_zwei += random.random()
+        wert_zwei += random.randint(0,10)
 
     return wert_zwei
 
 def erzeugung_eins():
-    wert_eins
-    iterativ
-    random.seed(time.time())
+    global iterativ
+    wert_eins = 0
     for i in range(iterativ):
-        wert_eins += random.random()
+        wert_eins += random.randint(0,10)
 
     return wert_eins
 
+def pruefe_werte():
 
-print("hallo", erzeugung_eins(),erzeugung_zwei())
+    schleife = True
+
+    while schleife:
+        eins = erzeugung_eins()
+        zwei = erzeugung_zwei()
+        if (eins != zwei) and (eins <= zwei):
+            schleife = False
+
+    if not schleife:
+        return eins,zwei
+
+
+eins, zwei = pruefe_werte()
+print(eins,zwei)
